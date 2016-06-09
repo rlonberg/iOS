@@ -8,6 +8,8 @@
 
 import Foundation
 
+let hoursDifferenceFromGMT = NSTimeZone.localTimeZone().secondsFromGMT / 60 / 60
+
 extension NSDate {
     func dayOfWeek() -> Int? {
         if
@@ -130,8 +132,8 @@ func GMTtoEST(gmt: String) -> String {
 /// - returns: hour:minute of datetime in EST
 ///
 func ESThourAndMinute(gmt: String) -> String {
-    let adjustHourBy4 = (((Int(gmt[11...12])! + 24)-4)%24)%12
-    let ESTtime = String(adjustHourBy4) + gmt[13...15]
+    let adjustHourByLocalTimeZone = (((Int(gmt[11...12])! + 24)+hoursDifferenceFromGMT)%24)%12
+    let ESTtime = String(adjustHourByLocalTimeZone) + gmt[13...15]
     return ESTtime
 }
 
