@@ -1,0 +1,514 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		419862EC1CDF96AC00B82B6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419862EB1CDF96AC00B82B6B /* AppDelegate.swift */; };
+		419862EE1CDF96AC00B82B6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419862ED1CDF96AC00B82B6B /* ViewController.swift */; };
+		419862F11CDF96AC00B82B6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419862EF1CDF96AC00B82B6B /* Main.storyboard */; };
+		419862F31CDF96AC00B82B6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 419862F21CDF96AC00B82B6B /* Assets.xcassets */; };
+		419862F61CDF96AC00B82B6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 419862F41CDF96AC00B82B6B /* LaunchScreen.storyboard */; };
+		419863011CDF96AC00B82B6B /* NBAtipperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419863001CDF96AC00B82B6B /* NBAtipperTests.swift */; };
+		4198630C1CDF96AC00B82B6B /* NBAtipperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4198630B1CDF96AC00B82B6B /* NBAtipperUITests.swift */; };
+		4198631A1CDFA89100B82B6B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419863191CDFA89100B82B6B /* HomeViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		419862FD1CDF96AC00B82B6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419862E01CDF96AC00B82B6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 419862E71CDF96AC00B82B6B;
+			remoteInfo = NBAtipper;
+		};
+		419863081CDF96AC00B82B6B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 419862E01CDF96AC00B82B6B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 419862E71CDF96AC00B82B6B;
+			remoteInfo = NBAtipper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		419862E81CDF96AC00B82B6B /* tipBaller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tipBaller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		419862EB1CDF96AC00B82B6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		419862ED1CDF96AC00B82B6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		419862F01CDF96AC00B82B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		419862F21CDF96AC00B82B6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		419862F51CDF96AC00B82B6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		419862F71CDF96AC00B82B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		419862FC1CDF96AC00B82B6B /* NBAtipperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBAtipperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		419863001CDF96AC00B82B6B /* NBAtipperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAtipperTests.swift; sourceTree = "<group>"; };
+		419863021CDF96AC00B82B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		419863071CDF96AC00B82B6B /* NBAtipperUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBAtipperUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4198630B1CDF96AC00B82B6B /* NBAtipperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAtipperUITests.swift; sourceTree = "<group>"; };
+		4198630D1CDF96AC00B82B6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		419863191CDFA89100B82B6B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		419862E51CDF96AC00B82B6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419862F91CDF96AC00B82B6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419863041CDF96AC00B82B6B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		419862DF1CDF96AC00B82B6B = {
+			isa = PBXGroup;
+			children = (
+				419862EA1CDF96AC00B82B6B /* NBAtipper */,
+				419862FF1CDF96AC00B82B6B /* NBAtipperTests */,
+				4198630A1CDF96AC00B82B6B /* NBAtipperUITests */,
+				419862E91CDF96AC00B82B6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		419862E91CDF96AC00B82B6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				419862E81CDF96AC00B82B6B /* tipBaller.app */,
+				419862FC1CDF96AC00B82B6B /* NBAtipperTests.xctest */,
+				419863071CDF96AC00B82B6B /* NBAtipperUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		419862EA1CDF96AC00B82B6B /* NBAtipper */ = {
+			isa = PBXGroup;
+			children = (
+				419862EB1CDF96AC00B82B6B /* AppDelegate.swift */,
+				419862ED1CDF96AC00B82B6B /* ViewController.swift */,
+				419862EF1CDF96AC00B82B6B /* Main.storyboard */,
+				419862F21CDF96AC00B82B6B /* Assets.xcassets */,
+				419862F41CDF96AC00B82B6B /* LaunchScreen.storyboard */,
+				419862F71CDF96AC00B82B6B /* Info.plist */,
+				419863191CDFA89100B82B6B /* HomeViewController.swift */,
+			);
+			path = NBAtipper;
+			sourceTree = "<group>";
+		};
+		419862FF1CDF96AC00B82B6B /* NBAtipperTests */ = {
+			isa = PBXGroup;
+			children = (
+				419863001CDF96AC00B82B6B /* NBAtipperTests.swift */,
+				419863021CDF96AC00B82B6B /* Info.plist */,
+			);
+			path = NBAtipperTests;
+			sourceTree = "<group>";
+		};
+		4198630A1CDF96AC00B82B6B /* NBAtipperUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4198630B1CDF96AC00B82B6B /* NBAtipperUITests.swift */,
+				4198630D1CDF96AC00B82B6B /* Info.plist */,
+			);
+			path = NBAtipperUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		419862E71CDF96AC00B82B6B /* NBAtipper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 419863101CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipper" */;
+			buildPhases = (
+				419862E41CDF96AC00B82B6B /* Sources */,
+				419862E51CDF96AC00B82B6B /* Frameworks */,
+				419862E61CDF96AC00B82B6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NBAtipper;
+			productName = NBAtipper;
+			productReference = 419862E81CDF96AC00B82B6B /* tipBaller.app */;
+			productType = "com.apple.product-type.application";
+		};
+		419862FB1CDF96AC00B82B6B /* NBAtipperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 419863131CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipperTests" */;
+			buildPhases = (
+				419862F81CDF96AC00B82B6B /* Sources */,
+				419862F91CDF96AC00B82B6B /* Frameworks */,
+				419862FA1CDF96AC00B82B6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				419862FE1CDF96AC00B82B6B /* PBXTargetDependency */,
+			);
+			name = NBAtipperTests;
+			productName = NBAtipperTests;
+			productReference = 419862FC1CDF96AC00B82B6B /* NBAtipperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		419863061CDF96AC00B82B6B /* NBAtipperUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 419863161CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipperUITests" */;
+			buildPhases = (
+				419863031CDF96AC00B82B6B /* Sources */,
+				419863041CDF96AC00B82B6B /* Frameworks */,
+				419863051CDF96AC00B82B6B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				419863091CDF96AC00B82B6B /* PBXTargetDependency */,
+			);
+			name = NBAtipperUITests;
+			productName = NBAtipperUITests;
+			productReference = 419863071CDF96AC00B82B6B /* NBAtipperUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		419862E01CDF96AC00B82B6B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Ravi Lonberg";
+				TargetAttributes = {
+					419862E71CDF96AC00B82B6B = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+					};
+					419862FB1CDF96AC00B82B6B = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+						TestTargetID = 419862E71CDF96AC00B82B6B;
+					};
+					419863061CDF96AC00B82B6B = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+						TestTargetID = 419862E71CDF96AC00B82B6B;
+					};
+				};
+			};
+			buildConfigurationList = 419862E31CDF96AC00B82B6B /* Build configuration list for PBXProject "NBAtipper" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 419862DF1CDF96AC00B82B6B;
+			productRefGroup = 419862E91CDF96AC00B82B6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				419862E71CDF96AC00B82B6B /* NBAtipper */,
+				419862FB1CDF96AC00B82B6B /* NBAtipperTests */,
+				419863061CDF96AC00B82B6B /* NBAtipperUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		419862E61CDF96AC00B82B6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				419862F61CDF96AC00B82B6B /* LaunchScreen.storyboard in Resources */,
+				419862F31CDF96AC00B82B6B /* Assets.xcassets in Resources */,
+				419862F11CDF96AC00B82B6B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419862FA1CDF96AC00B82B6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419863051CDF96AC00B82B6B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		419862E41CDF96AC00B82B6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				419862EE1CDF96AC00B82B6B /* ViewController.swift in Sources */,
+				419862EC1CDF96AC00B82B6B /* AppDelegate.swift in Sources */,
+				4198631A1CDFA89100B82B6B /* HomeViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419862F81CDF96AC00B82B6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				419863011CDF96AC00B82B6B /* NBAtipperTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		419863031CDF96AC00B82B6B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4198630C1CDF96AC00B82B6B /* NBAtipperUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		419862FE1CDF96AC00B82B6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 419862E71CDF96AC00B82B6B /* NBAtipper */;
+			targetProxy = 419862FD1CDF96AC00B82B6B /* PBXContainerItemProxy */;
+		};
+		419863091CDF96AC00B82B6B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 419862E71CDF96AC00B82B6B /* NBAtipper */;
+			targetProxy = 419863081CDF96AC00B82B6B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		419862EF1CDF96AC00B82B6B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				419862F01CDF96AC00B82B6B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		419862F41CDF96AC00B82B6B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				419862F51CDF96AC00B82B6B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4198630E1CDF96AC00B82B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4198630F1CDF96AC00B82B6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		419863111CDF96AC00B82B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NBAtipper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipper;
+				PRODUCT_NAME = tipBaller;
+			};
+			name = Debug;
+		};
+		419863121CDF96AC00B82B6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = NBAtipper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipper;
+				PRODUCT_NAME = tipBaller;
+			};
+			name = Release;
+		};
+		419863141CDF96AC00B82B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NBAtipperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBAtipper.app/NBAtipper";
+			};
+			name = Debug;
+		};
+		419863151CDF96AC00B82B6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = NBAtipperTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipperTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBAtipper.app/NBAtipper";
+			};
+			name = Release;
+		};
+		419863171CDF96AC00B82B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NBAtipperUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NBAtipper;
+			};
+			name = Debug;
+		};
+		419863181CDF96AC00B82B6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = NBAtipperUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAtipperUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = NBAtipper;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		419862E31CDF96AC00B82B6B /* Build configuration list for PBXProject "NBAtipper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4198630E1CDF96AC00B82B6B /* Debug */,
+				4198630F1CDF96AC00B82B6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		419863101CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				419863111CDF96AC00B82B6B /* Debug */,
+				419863121CDF96AC00B82B6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		419863131CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				419863141CDF96AC00B82B6B /* Debug */,
+				419863151CDF96AC00B82B6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		419863161CDF96AC00B82B6B /* Build configuration list for PBXNativeTarget "NBAtipperUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				419863171CDF96AC00B82B6B /* Debug */,
+				419863181CDF96AC00B82B6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 419862E01CDF96AC00B82B6B /* Project object */;
+}
