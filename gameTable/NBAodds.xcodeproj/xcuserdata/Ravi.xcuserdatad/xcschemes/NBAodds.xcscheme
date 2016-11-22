@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4125ADD61CB59137009DE257"
-               BuildableName = "oddsDesk.app"
+               BuildableName = "Odds.app"
                BlueprintName = "NBAodds"
                ReferencedContainer = "container:NBAodds.xcodeproj">
             </BuildableReference>
@@ -48,12 +48,22 @@
                ReferencedContainer = "container:NBAodds.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "4141F37C1D0DD394007F87EB"
+               BuildableName = "OddsDataKitTests.xctest"
+               BlueprintName = "OddsDataKitTests"
+               ReferencedContainer = "container:NBAodds.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4125ADD61CB59137009DE257"
-            BuildableName = "oddsDesk.app"
+            BuildableName = "Odds.app"
             BlueprintName = "NBAodds"
             ReferencedContainer = "container:NBAodds.xcodeproj">
          </BuildableReference>
@@ -76,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4125ADD61CB59137009DE257"
-            BuildableName = "oddsDesk.app"
+            BuildableName = "Odds.app"
             BlueprintName = "NBAodds"
             ReferencedContainer = "container:NBAodds.xcodeproj">
          </BuildableReference>
@@ -95,7 +105,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4125ADD61CB59137009DE257"
-            BuildableName = "oddsDesk.app"
+            BuildableName = "Odds.app"
             BlueprintName = "NBAodds"
             ReferencedContainer = "container:NBAodds.xcodeproj">
          </BuildableReference>

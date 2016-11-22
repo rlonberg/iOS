@@ -148,7 +148,7 @@ func ESThourAndMinute(gmt: String) -> String {
 ///
 func ESTmorningOrAfternoon(gmt: String) -> String {
     let morningMax = 11 //11am or lower indicates a morning time
-    if ((Int(gmt[11...12])! + 24)-4) % 24 > morningMax {
+    if ((Int(gmt[11...12])! + 24)+hoursDifferenceFromGMT) % 24 > morningMax {
         return "pm"
     } else {
         return "am"
@@ -168,7 +168,7 @@ func eventDay(gmt: String) -> Int {
     gmt
     var eventDay = Int(gmt[8...9])
     let eventHourAsGMT = Int(gmt[11...12])!
-    let eventHourAsEST = eventHourAsGMT - 4
+    let eventHourAsEST = eventHourAsGMT + hoursDifferenceFromGMT
     if eventHourAsEST < 0 {
         eventDay = eventDay! - 1
     }
@@ -209,9 +209,13 @@ func ESTday(gmt: String) -> String {
         let monthDays = [31,29,31,30,31,30,31,31,30,31,30,30]
         
         var daysAhead = dayOfEvent - today!
-        
+        print(daysAhead)
+        print(gmt)
+        print(monthOfEvent)
+        print(today)
+        print(dayOfEvent)
         if daysAhead < 0 { // event is next month
-            daysAhead = (monthDays[monthOfEvent] + dayOfEvent) - today!
+            daysAhead = (monthDays[monthOfEvent-1] + dayOfEvent) - today!
         }
         
         return weekDays[ (daysAhead + (nsDateObject.dayOfWeek()!-1)) % weekDays.count ] + ", at "

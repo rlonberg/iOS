@@ -11,7 +11,7 @@ import UIKit
 let fifaURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Soccer"
 var fifaURL = NSURL(string: fifaURLlink)
 
-var FIFAfilter = ["Eng. Premier", "Bundesliga", "Serie A", "La Liga", "USA (MLS)"]//["English Premier League", "Bundesliga", "Serie A", "La Liga", "MLS"]
+var FIFAfilter = ["Eng. Premier", "Bundesliga", "Serie A", "La Liga", "USA (MLS)"]// ["Copa America", "UEFA EURO"] //, "MLS"] // COPA AMERICA ////["English Premier League", "Bundesliga", "Serie A", "La Liga", "MLS"]
 var FIFAadjustLink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Soccer"
 
 class FIFAmenuViewController: UIViewController {
@@ -21,6 +21,8 @@ class FIFAmenuViewController: UIViewController {
     @IBOutlet weak var SerieA: UISwitch!
     @IBOutlet weak var LaLiga: UISwitch!
     @IBOutlet weak var MLS: UISwitch!
+    @IBOutlet weak var UefaEuro: UISwitch!
+    @IBOutlet weak var CopaAmerica: UISwitch!
     
     @IBAction func proceedToFIFA(sender: UIButton) {
         print("proceeding to fifa")
@@ -40,12 +42,22 @@ class FIFAmenuViewController: UIViewController {
         if MLS.on {
             filter.append("USA (MLS)")
         }
-        print(filter)
+        if CopaAmerica.on {
+            filter.append("Copa America")
+        }
+        if UefaEuro.on {
+            filter.append("UEFA EURO")
+        }
+        
+        //print(filter)
+        
+        /*
         if filter.count == 1 {
             FIFAadjustLink.appendContentsOf("&sportsubtype=")
             FIFAadjustLink.appendContentsOf(filter[0])
             fifaURL = NSURL(string: FIFAadjustLink)
         }
+        */
         
         FIFAfilter = filter
     }

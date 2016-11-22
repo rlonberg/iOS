@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -18,30 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Curry1-1940x1293" translatesAutoresizingMaskIntoConstraints="NO" id="fuj-PL-JfS">
-                                <rect key="frame" x="0.0" y="188" width="652" height="412"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slice 2 - Curry Chef" translatesAutoresizingMaskIntoConstraints="NO" id="RxM-Bp-iiI">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="oddsDesk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Blm-jy-x4g">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="188"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="600" id="53j-bC-W8E"/>
-                                    <constraint firstAttribute="height" constant="188" id="juj-nt-eDo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="GurmukhiMN-Bold" family="Gurmukhi MN" pointSize="60"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.16663357109999999" green="0.1784808759" blue="0.38737980770000002" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="tintColor" red="1" green="0.11462284857778615" blue="0.063212961169225479" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.11076081941033866" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="fuj-PL-JfS" secondAttribute="trailing" constant="-72" id="2f9-c0-w2h"/>
-                            <constraint firstItem="fuj-PL-JfS" firstAttribute="top" secondItem="Blm-jy-x4g" secondAttribute="bottom" id="Rai-g6-CQ3"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="fuj-PL-JfS" secondAttribute="bottom" id="Ssc-IE-3o3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Blm-jy-x4g" secondAttribute="trailing" constant="-20" id="Utk-ew-lXP"/>
-                            <constraint firstItem="Blm-jy-x4g" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="cHF-SJ-KUd"/>
-                            <constraint firstItem="fuj-PL-JfS" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="168" id="r9R-xG-Pza"/>
-                            <constraint firstItem="fuj-PL-JfS" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="sZn-YN-hpH"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="RxM-Bp-iiI" secondAttribute="bottom" id="83Z-wp-6Iw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RxM-Bp-iiI" secondAttribute="trailing" constant="-20" id="Fo4-Bd-dC7"/>
+                            <constraint firstItem="RxM-Bp-iiI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="Gre-qj-e42"/>
+                            <constraint firstItem="RxM-Bp-iiI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Xe7-mD-pF5"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -51,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Curry1-1940x1293" width="1940" height="1293"/>
+        <image name="Slice 2 - Curry Chef" width="1948" height="1301"/>
     </resources>
 </document>

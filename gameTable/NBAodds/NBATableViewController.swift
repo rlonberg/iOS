@@ -95,6 +95,10 @@ class NBATableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NBATableViewCell
         
         cell.date.text = game.datetime.componentsSeparatedByString("+")[0]
+        if (game.datetime.componentsSeparatedByString("+")[0]).rangeOfString(" 0:") != nil {
+            cell.date.text = cell.date.text?.stringByReplacingOccurrencesOfString(" 0:", withString: " 12:")
+        }
+        
         cell.visitingSpread.text = ""//"(" + String(game.spread) + ")"
         cell.homeSpread.text = ""//"(" + String(-1*game.spread) + ")"
         if game.spread < 0 {
@@ -112,6 +116,9 @@ class NBATableViewController: UITableViewController {
         // refactor this later
         cell.awayImage.image = UIImage(named: returnPNG(game.home))
         cell.homeImage.image = UIImage(named: returnPNG(game.away))
+        //cell.awayImage.image = UIImage(named: game.away)
+        //cell.homeImage.image = UIImage(named: game.home)
+        
         
         cell.awayTeam.text = game.away
         cell.homeTeam.text = "at " + game.home
@@ -136,8 +143,7 @@ class NBATableViewController: UITableViewController {
             return "dirkPNG"
             
         case "Oklahoma City Thunder":
-            let options = ["russelPNG","durantPNG"]
-            return options[Int(arc4random_uniform(6) + 1)%2]
+            return "westbrookPNG"
             
         case "Houston Rockets":
             return "hardenPNG"
@@ -181,9 +187,61 @@ class NBATableViewController: UITableViewController {
         case "Los Angeles Clippers":
             return "cp3PNG"
             
+        case "Chicago Bulls":
+            return "butlerPNG"
+        
+        case "Washington Wizards":
+            let options = ["wallPNG", "bealPNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
+        
+        case "Orlando Magic":
+            let options = ["gordon_dunkPNG", "vukevicPNG", "gordonPNG"]
+            return options[Int(arc4random_uniform(6)+1)%3]
+            
+        case "Milwaukee Bucks":
+            let options = ["giannisPNG", "jabariPNG", "middletonPNG"]
+            return options[Int(arc4random_uniform(6)+1)%3]
+            
+        case "New York Knicks":
+            let options = ["carmeloPNG", "porzingisPNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
+            
+        case "Brooklyn Nets":
+            return "lopezPNG"
+            
+        case "Philadelphia 76ers":
+            return "butlerPNG"
+        
+        case "Utah Jazz":
+            let options = ["gobertPNG", "favorsPNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
+            
+        case "Sacramento Kings":
+            let options = ["cousinsPNG", "mclemorePNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
+            
+        case "Denver Nuggets":
+            let options = ["jokicPNG", "mudiayPNG", "fariedPNG"]
+            return options[Int(arc4random_uniform(6)+1)%3]
+            
+        case "New Orleans Pelicans":
+            let options = ["anthonyPNG", "ADPNG", "davisPNG"]
+            return options[Int(arc4random_uniform(6)+1)%3]
+            
+        case "Minnesota Timberwolves":
+            let options = ["townsPNG", "wigginsPNG", "lavinePNG"]
+            return options[Int(arc4random_uniform(6)+1)%3]
+            
+        case "Phoenix Suns":
+            let options = ["knightPNG", "bookerPNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
+            
+        case "Los Angeles Lakers":
+            let options = ["russellPNG", "randlePNG"]
+            return options[Int(arc4random_uniform(6)+1)%2]
             
         default:
-            return ""
+            return "default"
         }
     }
     

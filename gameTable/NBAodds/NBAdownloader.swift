@@ -8,7 +8,7 @@
 
 import Foundation
 
-let nbaURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Basketball&sportsubtype=nba"
+let nbaURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Basketball&sportsubtype=NBA"
 let nbaURL = NSURL(string: nbaURLlink)
 
 

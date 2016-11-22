@@ -6,9 +6,13 @@
 //  Copyright © 2016 Ravi Lonberg. All rights reserved.
 //
 
+/*
+ COPA AMERICA VERSION
+ */
+
 import Foundation
 
-//let majorLeagues:[String] = ["Eng. Premier", "Bundesliga", "Serie A", "La Liga", "USA (MLS)"]
+let majorLeagues:[String] = ["Eng. Premier", "Bundesliga", "Serie A", "La Liga", "USA (MLS)"]
 
 
 ///
@@ -62,7 +66,6 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     var noLine:Bool = false
     
     
-    
     ///
     /// Parses from PinnacleSports XML feed and builds the slate of FIFA games
     ///     to be used by FIFATableViewController. Should be the only method
@@ -74,7 +77,6 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
         
         var slate:[Game] = []
         
-        print(fifaURL)
         if fifaURL == nil {
             fifaURL = NSURL(string: FIFAadjustLink)
         }
@@ -91,6 +93,58 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
             
         } else {
             print("parse failure!")
+        }
+        
+        let sortedSlate = sortSlate(slate)
+        
+        fifaURL = NSURL(string: fifaURLlink)
+        
+        return sortedSlate
+        
+    }
+    
+    ///
+    /// Parses from PinnacleSports XML feed and builds the slate of FIFA games
+    ///     to be used by FIFATableViewController. Should be the only method
+    ///     called in FIFAdownloader.
+    ///
+    /// - returns: FIFA event slate, to populate FIFA table view controller
+    ///
+    func lightningReturnSlate() -> [[Game]] {
+        
+        var slate:[Game] = []
+        
+        var blendLink:NSURL
+        var adjustLnk = ""
+        
+        for lge in FIFAfilter {
+            
+        adjustLnk = FIFAadjustLink + "&sportsubtype=" + lge
+            
+        adjustLnk = adjustLnk.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+            
+        print(adjustLnk)
+        
+        //adjustLnk = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Soccer&sportsubtype=Copa%20America"
+        blendLink = NSURL(string: adjustLnk)!
+    
+        
+        parser = NSXMLParser(contentsOfURL: blendLink)
+        parser.delegate = self
+        
+        let success:Bool = parser.parse()
+        
+        if success {
+            print("parse success!")
+            
+            slate = slate + fillSlate(rawSlate)
+            rawSlate.removeAll()
+            
+            
+        } else {
+            print("parse failure!")
+        }
+            
         }
         
         let sortedSlate = sortSlate(slate)
@@ -181,12 +235,12 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Builds preliminary FIFA slate from raw feed scraped by XMLparser
     ///  eg ["2016-04-30 13:30", "Bundesliga", "No", "Bayern Munchen", "Home", "Borussia Monchengladbach", "Visiting", "1.25"]
-    ///
     /// - parameter: rawFeed of initially parsed data from NSXMLparser
     ///
     /// - returns: preliminary slate of events for FIFA (still needs to be sorted)
     ///
     private func fillSlate(rawFeed: [[String]]) -> [Game] {
+        
         
         var finish:[Game] = []
         
@@ -214,12 +268,17 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
             home = index[5]
             
             if index.count > 7 {
-                spread = Double(index[7])!
+                print(index)
+                if (index[index.count-1]) != "Visiting" {
+                    spread = Double(index[index.count-1])!
+                } else {
+                    spread = Double(-999)
+                }
             } else {
                 spread = Double(-999)
             }
             
-            if away.rangeOfString("Teams") == nil {
+            if away.rangeOfString("Teams") == nil && spread > -900 {
                 finish.append(Game(datetime: datetime, league: league, isLive: isLive, away: away, home: home, spread: spread))
             }
             

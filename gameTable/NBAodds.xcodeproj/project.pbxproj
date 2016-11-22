@@ -15,6 +15,15 @@
 		4125ADE51CB59137009DE257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4125ADE31CB59137009DE257 /* LaunchScreen.storyboard */; };
 		4125ADF01CB59137009DE257 /* NBAoddsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125ADEF1CB59137009DE257 /* NBAoddsTests.swift */; };
 		4125ADFB1CB59137009DE257 /* NBAoddsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125ADFA1CB59137009DE257 /* NBAoddsUITests.swift */; };
+		4141F3601D0DCDDD007F87EB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141F35F1D0DCDDD007F87EB /* NotificationCenter.framework */; };
+		4141F3631D0DCDDD007F87EB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4141F3621D0DCDDD007F87EB /* TodayViewController.swift */; };
+		4141F3661D0DCDDD007F87EB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4141F3641D0DCDDD007F87EB /* MainInterface.storyboard */; };
+		4141F36A1D0DCDDD007F87EB /* Odds Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4141F35D1D0DCDDD007F87EB /* Odds Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4141F3771D0DD394007F87EB /* OddsDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4141F3761D0DD394007F87EB /* OddsDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4141F37E1D0DD394007F87EB /* OddsDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141F3741D0DD394007F87EB /* OddsDataKit.framework */; };
+		4141F3851D0DD394007F87EB /* OddsDataKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4141F3841D0DD394007F87EB /* OddsDataKitTests.swift */; };
+		4141F3891D0DD394007F87EB /* OddsDataKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4141F3741D0DD394007F87EB /* OddsDataKit.framework */; };
+		4141F38A1D0DD394007F87EB /* OddsDataKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4141F3741D0DD394007F87EB /* OddsDataKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		414C1DCB1CC7D92E00FDE587 /* NBAdownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C1DCA1CC7D92E00FDE587 /* NBAdownloader.swift */; };
 		414C1DD01CC7E26600FDE587 /* MLBTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C1DCF1CC7E26600FDE587 /* MLBTableViewCell.swift */; };
 		414C1DD31CC80E4A00FDE587 /* NHLdownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C1DD21CC80E4A00FDE587 /* NHLdownloader.swift */; };
@@ -46,11 +55,64 @@
 			remoteGlobalIDString = 4125ADD61CB59137009DE257;
 			remoteInfo = NBAodds;
 		};
+		4141F3681D0DCDDD007F87EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4125ADCF1CB59137009DE257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4141F35C1D0DCDDD007F87EB;
+			remoteInfo = "Odds Widget";
+		};
+		4141F37F1D0DD394007F87EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4125ADCF1CB59137009DE257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4141F3731D0DD394007F87EB;
+			remoteInfo = OddsDataKit;
+		};
+		4141F3811D0DD394007F87EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4125ADCF1CB59137009DE257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4125ADD61CB59137009DE257;
+			remoteInfo = NBAodds;
+		};
+		4141F3871D0DD394007F87EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4125ADCF1CB59137009DE257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4141F3731D0DD394007F87EB;
+			remoteInfo = OddsDataKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4141F36E1D0DCDDD007F87EB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4141F36A1D0DCDDD007F87EB /* Odds Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F38E1D0DD394007F87EB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4141F38A1D0DD394007F87EB /* OddsDataKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		412443F21CC15D9B005E6615 /* FIFATableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FIFATableViewController.swift; sourceTree = "<group>"; };
-		4125ADD71CB59137009DE257 /* oddsDesk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oddsDesk.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4125ADD71CB59137009DE257 /* Odds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Odds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4125ADDA1CB59137009DE257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4125ADDC1CB59137009DE257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4125ADDF1CB59137009DE257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +125,18 @@
 		4125ADF61CB59137009DE257 /* NBAoddsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NBAoddsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4125ADFA1CB59137009DE257 /* NBAoddsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBAoddsUITests.swift; sourceTree = "<group>"; };
 		4125ADFC1CB59137009DE257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4141F35D1D0DCDDD007F87EB /* Odds Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Odds Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4141F35F1D0DCDDD007F87EB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		4141F3621D0DCDDD007F87EB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		4141F3651D0DCDDD007F87EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		4141F3671D0DCDDD007F87EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4141F3741D0DD394007F87EB /* OddsDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OddsDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4141F3761D0DD394007F87EB /* OddsDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OddsDataKit.h; sourceTree = "<group>"; };
+		4141F3781D0DD394007F87EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4141F37D1D0DD394007F87EB /* OddsDataKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OddsDataKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4141F3841D0DD394007F87EB /* OddsDataKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OddsDataKitTests.swift; sourceTree = "<group>"; };
+		4141F3861D0DD394007F87EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4141F3921D10C289007F87EB /* Odds Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Odds Widget.entitlements"; sourceTree = "<group>"; };
 		414C1DCA1CC7D92E00FDE587 /* NBAdownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NBAdownloader.swift; sourceTree = "<group>"; };
 		414C1DCF1CC7E26600FDE587 /* MLBTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLBTableViewCell.swift; sourceTree = "<group>"; };
 		414C1DD21CC80E4A00FDE587 /* NHLdownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NHLdownloader.swift; sourceTree = "<group>"; };
@@ -86,6 +160,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4141F3891D0DD394007F87EB /* OddsDataKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +178,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4141F35A1D0DCDDD007F87EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F3601D0DCDDD007F87EB /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F3701D0DD394007F87EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F37A1D0DD394007F87EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F37E1D0DD394007F87EB /* OddsDataKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -112,6 +210,10 @@
 				4125ADD91CB59137009DE257 /* NBAodds */,
 				4125ADEE1CB59137009DE257 /* NBAoddsTests */,
 				4125ADF91CB59137009DE257 /* NBAoddsUITests */,
+				4141F3611D0DCDDD007F87EB /* Odds Widget */,
+				4141F3751D0DD394007F87EB /* OddsDataKit */,
+				4141F3831D0DD394007F87EB /* OddsDataKitTests */,
+				4141F35E1D0DCDDD007F87EB /* Frameworks */,
 				4125ADD81CB59137009DE257 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,9 +221,12 @@
 		4125ADD81CB59137009DE257 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4125ADD71CB59137009DE257 /* oddsDesk.app */,
+				4125ADD71CB59137009DE257 /* Odds.app */,
 				4125ADEB1CB59137009DE257 /* NBAoddsTests.xctest */,
 				4125ADF61CB59137009DE257 /* NBAoddsUITests.xctest */,
+				4141F35D1D0DCDDD007F87EB /* Odds Widget.appex */,
+				4141F3741D0DD394007F87EB /* OddsDataKit.framework */,
+				4141F37D1D0DD394007F87EB /* OddsDataKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,6 +268,43 @@
 				4125ADFC1CB59137009DE257 /* Info.plist */,
 			);
 			path = NBAoddsUITests;
+			sourceTree = "<group>";
+		};
+		4141F35E1D0DCDDD007F87EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4141F35F1D0DCDDD007F87EB /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4141F3611D0DCDDD007F87EB /* Odds Widget */ = {
+			isa = PBXGroup;
+			children = (
+				4141F3921D10C289007F87EB /* Odds Widget.entitlements */,
+				4141F3621D0DCDDD007F87EB /* TodayViewController.swift */,
+				4141F3641D0DCDDD007F87EB /* MainInterface.storyboard */,
+				4141F3671D0DCDDD007F87EB /* Info.plist */,
+			);
+			path = "Odds Widget";
+			sourceTree = "<group>";
+		};
+		4141F3751D0DD394007F87EB /* OddsDataKit */ = {
+			isa = PBXGroup;
+			children = (
+				4141F3761D0DD394007F87EB /* OddsDataKit.h */,
+				4141F3781D0DD394007F87EB /* Info.plist */,
+			);
+			path = OddsDataKit;
+			sourceTree = "<group>";
+		};
+		4141F3831D0DD394007F87EB /* OddsDataKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				4141F3841D0DD394007F87EB /* OddsDataKitTests.swift */,
+				4141F3861D0DD394007F87EB /* Info.plist */,
+			);
+			path = OddsDataKitTests;
 			sourceTree = "<group>";
 		};
 		414C1DCC1CC7DF9500FDE587 /* NBA */ = {
@@ -208,6 +350,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4141F3711D0DD394007F87EB /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F3771D0DD394007F87EB /* OddsDataKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		4125ADD61CB59137009DE257 /* NBAodds */ = {
 			isa = PBXNativeTarget;
@@ -216,14 +369,18 @@
 				4125ADD31CB59137009DE257 /* Sources */,
 				4125ADD41CB59137009DE257 /* Frameworks */,
 				4125ADD51CB59137009DE257 /* Resources */,
+				4141F36E1D0DCDDD007F87EB /* Embed App Extensions */,
+				4141F38E1D0DD394007F87EB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4141F3691D0DCDDD007F87EB /* PBXTargetDependency */,
+				4141F3881D0DD394007F87EB /* PBXTargetDependency */,
 			);
 			name = NBAodds;
 			productName = NBAodds;
-			productReference = 4125ADD71CB59137009DE257 /* oddsDesk.app */;
+			productReference = 4125ADD71CB59137009DE257 /* Odds.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4125ADEA1CB59137009DE257 /* NBAoddsTests */ = {
@@ -262,6 +419,60 @@
 			productReference = 4125ADF61CB59137009DE257 /* NBAoddsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		4141F35C1D0DCDDD007F87EB /* Odds Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4141F36D1D0DCDDD007F87EB /* Build configuration list for PBXNativeTarget "Odds Widget" */;
+			buildPhases = (
+				4141F3591D0DCDDD007F87EB /* Sources */,
+				4141F35A1D0DCDDD007F87EB /* Frameworks */,
+				4141F35B1D0DCDDD007F87EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Odds Widget";
+			productName = "Odds Widget";
+			productReference = 4141F35D1D0DCDDD007F87EB /* Odds Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		4141F3731D0DD394007F87EB /* OddsDataKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4141F38B1D0DD394007F87EB /* Build configuration list for PBXNativeTarget "OddsDataKit" */;
+			buildPhases = (
+				4141F36F1D0DD394007F87EB /* Sources */,
+				4141F3701D0DD394007F87EB /* Frameworks */,
+				4141F3711D0DD394007F87EB /* Headers */,
+				4141F3721D0DD394007F87EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OddsDataKit;
+			productName = OddsDataKit;
+			productReference = 4141F3741D0DD394007F87EB /* OddsDataKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4141F37C1D0DD394007F87EB /* OddsDataKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4141F38F1D0DD394007F87EB /* Build configuration list for PBXNativeTarget "OddsDataKitTests" */;
+			buildPhases = (
+				4141F3791D0DD394007F87EB /* Sources */,
+				4141F37A1D0DD394007F87EB /* Frameworks */,
+				4141F37B1D0DD394007F87EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4141F3801D0DD394007F87EB /* PBXTargetDependency */,
+				4141F3821D0DD394007F87EB /* PBXTargetDependency */,
+			);
+			name = OddsDataKitTests;
+			productName = OddsDataKitTests;
+			productReference = 4141F37D1D0DD394007F87EB /* OddsDataKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -286,6 +497,24 @@
 						DevelopmentTeam = M4Q6Z3P987;
 						TestTargetID = 4125ADD61CB59137009DE257;
 					};
+					4141F35C1D0DCDDD007F87EB = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					4141F3731D0DD394007F87EB = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+					};
+					4141F37C1D0DD394007F87EB = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = M4Q6Z3P987;
+						TestTargetID = 4125ADD61CB59137009DE257;
+					};
 				};
 			};
 			buildConfigurationList = 4125ADD21CB59137009DE257 /* Build configuration list for PBXProject "NBAodds" */;
@@ -304,6 +533,9 @@
 				4125ADD61CB59137009DE257 /* NBAodds */,
 				4125ADEA1CB59137009DE257 /* NBAoddsTests */,
 				4125ADF51CB59137009DE257 /* NBAoddsUITests */,
+				4141F35C1D0DCDDD007F87EB /* Odds Widget */,
+				4141F3731D0DD394007F87EB /* OddsDataKit */,
+				4141F37C1D0DD394007F87EB /* OddsDataKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +559,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		4125ADF41CB59137009DE257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F35B1D0DCDDD007F87EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F3661D0DCDDD007F87EB /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F3721D0DD394007F87EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F37B1D0DD394007F87EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,6 +630,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4141F3591D0DCDDD007F87EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F3631D0DCDDD007F87EB /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F36F1D0DD394007F87EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4141F3791D0DD394007F87EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4141F3851D0DD394007F87EB /* OddsDataKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -388,6 +665,26 @@
 			isa = PBXTargetDependency;
 			target = 4125ADD61CB59137009DE257 /* NBAodds */;
 			targetProxy = 4125ADF71CB59137009DE257 /* PBXContainerItemProxy */;
+		};
+		4141F3691D0DCDDD007F87EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4141F35C1D0DCDDD007F87EB /* Odds Widget */;
+			targetProxy = 4141F3681D0DCDDD007F87EB /* PBXContainerItemProxy */;
+		};
+		4141F3801D0DD394007F87EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4141F3731D0DD394007F87EB /* OddsDataKit */;
+			targetProxy = 4141F37F1D0DD394007F87EB /* PBXContainerItemProxy */;
+		};
+		4141F3821D0DD394007F87EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4125ADD61CB59137009DE257 /* NBAodds */;
+			targetProxy = 4141F3811D0DD394007F87EB /* PBXContainerItemProxy */;
+		};
+		4141F3881D0DD394007F87EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4141F3731D0DD394007F87EB /* OddsDataKit */;
+			targetProxy = 4141F3871D0DD394007F87EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -406,6 +703,14 @@
 				4125ADE41CB59137009DE257 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4141F3641D0DCDDD007F87EB /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4141F3651D0DCDDD007F87EB /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -502,10 +807,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NBAodds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAodds;
-				PRODUCT_NAME = oddsDesk;
+				PRODUCT_NAME = Odds;
 				SWIFT_OBJC_BRIDGING_HEADER = "NBAodds/NBAodds-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -517,10 +823,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = NBAodds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAodds;
-				PRODUCT_NAME = oddsDesk;
+				PRODUCT_NAME = Odds;
 				SWIFT_OBJC_BRIDGING_HEADER = "NBAodds/NBAodds-Bridging-Header.h";
 			};
 			name = Release;
@@ -533,7 +840,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAoddsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBAodds.app/NBAodds";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Odds.app/Odds";
 			};
 			name = Debug;
 		};
@@ -545,7 +852,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAoddsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NBAodds.app/NBAodds";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Odds.app/Odds";
 			};
 			name = Release;
 		};
@@ -568,6 +875,96 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.NBAoddsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = NBAodds;
+			};
+			name = Release;
+		};
+		4141F36B1D0DCDDD007F87EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Odds Widget/Odds Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Odds Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.bucknell.rl031.NBAodds.Odds-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4141F36C1D0DCDDD007F87EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Odds Widget/Odds Widget.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Odds Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "edu.bucknell.rl031.NBAodds.Odds-Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		4141F38C1D0DD394007F87EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OddsDataKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.OddsDataKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4141F38D1D0DD394007F87EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OddsDataKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.OddsDataKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4141F3901D0DD394007F87EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OddsDataKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.OddsDataKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Odds.app/Odds";
+			};
+			name = Debug;
+		};
+		4141F3911D0DD394007F87EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = OddsDataKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.bucknell.rl031.OddsDataKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Odds.app/Odds";
 			};
 			name = Release;
 		};
@@ -606,6 +1003,33 @@
 			buildConfigurations = (
 				4125AE061CB59137009DE257 /* Debug */,
 				4125AE071CB59137009DE257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4141F36D1D0DCDDD007F87EB /* Build configuration list for PBXNativeTarget "Odds Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4141F36B1D0DCDDD007F87EB /* Debug */,
+				4141F36C1D0DCDDD007F87EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4141F38B1D0DD394007F87EB /* Build configuration list for PBXNativeTarget "OddsDataKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4141F38C1D0DD394007F87EB /* Debug */,
+				4141F38D1D0DD394007F87EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4141F38F1D0DD394007F87EB /* Build configuration list for PBXNativeTarget "OddsDataKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4141F3901D0DD394007F87EB /* Debug */,
+				4141F3911D0DD394007F87EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

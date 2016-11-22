@@ -13,7 +13,7 @@ import UIKit
 ///
 class FIFATableViewController: UITableViewController {
     
-    //let sectionTitles:[String] = ["English Premier League", "Bundesliga", "Serie A", "La Liga", "MLS"]
+    let sectionTitles:[String] = ["English Premier League", "Bundesliga", "Serie A", "La Liga", "MLS"]
     
     
     var slate:[[FIFAdownloader.Game]] = [] {
@@ -49,7 +49,7 @@ class FIFATableViewController: UITableViewController {
         let refreshOperation = NSBlockOperation(block: {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             let downloader = FIFAdownloader()
-            self.slate = downloader.returnSlate()
+            self.slate = downloader.lightningReturnSlate() // changed from returnSlate to lightningReturnSlate
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         })
         
@@ -107,7 +107,7 @@ class FIFATableViewController: UITableViewController {
         
         // refactor later
         cell.awayTeam.text = game.home
-        cell.homeTeam.text = "at " + game.away
+        cell.homeTeam.text = "vs " + game.away
         cell.awayImage.image = UIImage(named: game.away)
         cell.homeImage.image = UIImage(named: game.home)
         
