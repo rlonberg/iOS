@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "908438354A0DF956AE4267D6A6EA3849AC4C276F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "908438354A0DF956AE4267D6A6EA3849AC4C276F" : 0,
+    "467BA122820EAA1B6BF967A40DF26F167E450068" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "FE2A06E3-BA8C-41EA-B3E0-A90689083C20",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "908438354A0DF956AE4267D6A6EA3849AC4C276F" : "NBAodds\/",
+    "467BA122820EAA1B6BF967A40DF26F167E450068" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "NBAodds",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "gameTable\/NBAodds.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.bucknell.edu:rl031\/csci321.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "467BA122820EAA1B6BF967A40DF26F167E450068"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rlonberg\/iOS",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "908438354A0DF956AE4267D6A6EA3849AC4C276F"
+    }
+  ]
+}
