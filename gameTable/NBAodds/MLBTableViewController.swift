@@ -15,7 +15,7 @@ class MLBTableViewController: UITableViewController {
     
     var slate:[MLBdownloader.Game] = [] {
         didSet {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
         }
@@ -26,7 +26,7 @@ class MLBTableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl!.addTarget(self, action: #selector(MLBTableViewController.refreshSlate), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(MLBTableViewController.refreshSlate), for: UIControlEvents.valueChanged)
         
         refreshSlate()
                 
@@ -42,20 +42,20 @@ class MLBTableViewController: UITableViewController {
     ///
     @IBAction func refreshSlate() {
         
-        let refreshOperation = NSBlockOperation(block: {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let refreshOperation = BlockOperation(block: {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let downloader = MLBdownloader()
             self.slate = downloader.returnSlate()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
         refreshOperation.completionBlock = {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.refreshControl?.endRefreshing()
             })
         }
         
         refreshControl?.beginRefreshing()
-        NSOperationQueue().addOperation(refreshOperation)
+        OperationQueue().addOperation(refreshOperation)
         
     }
     
@@ -67,12 +67,12 @@ class MLBTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard slate.count != 0 else {
             return 0
@@ -80,15 +80,15 @@ class MLBTableViewController: UITableViewController {
         return slate.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "MLBcell"
         
         let game = slate[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MLBTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MLBTableViewCell
         
-        cell.date.text = game.datetime.componentsSeparatedByString("+")[0]
+        cell.date.text = game.datetime.components(separatedBy: "+")[0]
         cell.awayTeam.text = game.away
         cell.homeTeam.text = "at " + game.home
         

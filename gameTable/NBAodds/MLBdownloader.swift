@@ -9,7 +9,7 @@
 import Foundation
 
 let mlbURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Baseball&sportsubtype=mlb"
-let mlbURL = NSURL(string: mlbURLlink)
+let mlbURL = URL(string: mlbURLlink)
 
 
 
@@ -17,7 +17,7 @@ let mlbURL = NSURL(string: mlbURLlink)
 /// Downloads league information from PinnacleSports server and parses the XML feed
 ///  populates companion TableViewController
 ///
-class MLBdownloader: NSObject, NSXMLParserDelegate {
+class MLBdownloader: NSObject, XMLParserDelegate {
     
     // Game struct for a typical MLB (baseball) event
     struct Game {
@@ -33,7 +33,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     }
     
     // specify an NSXMLparser to handle XML feed from pinnacle sports (mlbURL)
-    var parser: NSXMLParser!
+    var parser: XMLParser!
     
     // eg: eg: ["2016-04-14 00:05", "MLB", "No", "San Francisco Giants", "Visiting", "M. CAIN", "Colorado Rockies", "Home", "J. DE LA ROSA", "-1.5"]
     var strXMLData:[String] = []
@@ -74,7 +74,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
         
         var slate:[Game] = []
         
-        parser = NSXMLParser(contentsOfURL: mlbURL!)
+        parser = XMLParser(contentsOf: mlbURL!)
         parser.delegate = self
         
         let success:Bool = parser.parse()
@@ -101,21 +101,21 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: sorted event slate
     ///
-    private func sortSlate(slate: [Game]) -> [Game] {
+    fileprivate func sortSlate(_ slate: [Game]) -> [Game] {
         
         var todaySlate:[Game] = []
         var futureSlate:[Game] = []
         
         for game in slate {
-            if game.datetime.rangeOfString("Today") == nil {
+            if game.datetime.range(of: "Today") == nil {
                 futureSlate.append(game)
             } else {
                 todaySlate.append(game)
             }
         }
         
-        todaySlate.sortInPlace  { $0 < $1 }
-        futureSlate.sortInPlace { $0 < $1 }
+        todaySlate.sort  { $0 < $1 }
+        futureSlate.sort { $0 < $1 }
         
         todaySlate += futureSlate
         
@@ -132,7 +132,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: preliminary slate of events for MLB (still needs to be sorted)
     ///
-    private func fillSlate(rawFeed: [[String]]) -> [Game] {
+    fileprivate func fillSlate(_ rawFeed: [[String]]) -> [Game] {
         
         var finish:[Game] = []
         
@@ -183,7 +183,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a start tag for a given element.
     ///
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         currentElement=elementName;
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw" || elementName=="pitcher")
         {
@@ -208,7 +208,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters an end tag for a specific element.
     ///
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElement="";
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw" || elementName=="pitcher")
         {
@@ -232,7 +232,7 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element.
     ///
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         
         
         if noLine {
@@ -300,8 +300,8 @@ class MLBdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a fatal error.
     ///
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        NSLog("failure error: %@", parseError)
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        NSLog("failure error: %@", parseError as NSError)
     }
     
     

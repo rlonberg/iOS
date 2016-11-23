@@ -15,7 +15,7 @@ class NBATableViewController: UITableViewController {
     
     var slate:[NBAdownloader.Game] = [] {
         didSet {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
         }
@@ -28,7 +28,7 @@ class NBATableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl!.addTarget(self, action: #selector(NBATableViewController.refreshSlate), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(NBATableViewController.refreshSlate), for: UIControlEvents.valueChanged)
         
         refreshSlate()
         
@@ -44,20 +44,20 @@ class NBATableViewController: UITableViewController {
     
     @IBAction func refreshSlate() {
         
-        let refreshOperation = NSBlockOperation(block: {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let refreshOperation = BlockOperation(block: {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let downloader = NBAdownloader()
             self.slate = downloader.returnSlate()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
         refreshOperation.completionBlock = {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.refreshControl?.endRefreshing()
             })
         }
         
         refreshControl?.beginRefreshing()
-        NSOperationQueue().addOperation(refreshOperation)
+        OperationQueue().addOperation(refreshOperation)
         
     }
     
@@ -73,12 +73,12 @@ class NBATableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard slate.count != 0 else {
             return 0
@@ -86,27 +86,27 @@ class NBATableViewController: UITableViewController {
         return slate.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "NbaCell"
         
         let game = slate[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NBATableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NBATableViewCell
         
-        cell.date.text = game.datetime.componentsSeparatedByString("+")[0]
-        if (game.datetime.componentsSeparatedByString("+")[0]).rangeOfString(" 0:") != nil {
-            cell.date.text = cell.date.text?.stringByReplacingOccurrencesOfString(" 0:", withString: " 12:")
+        cell.date.text = game.datetime.components(separatedBy: "+")[0]
+        if (game.datetime.components(separatedBy: "+")[0]).range(of: " 0:") != nil {
+            cell.date.text = cell.date.text?.replacingOccurrences(of: " 0:", with: " 12:")
         }
         
         cell.visitingSpread.text = ""//"(" + String(game.spread) + ")"
         cell.homeSpread.text = ""//"(" + String(-1*game.spread) + ")"
         if game.spread < 0 {
             // visitors
-            cell.spread.text = game.away.componentsSeparatedByString(" ").last! + " favored by " + String(abs(game.spread))
+            cell.spread.text = game.away.components(separatedBy: " ").last! + " favored by " + String(abs(game.spread))
         } else {
             // home
-            cell.spread.text = game.home.componentsSeparatedByString(" ").last! + " favored by " + String(abs(game.spread))
+            cell.spread.text = game.home.components(separatedBy: " ").last! + " favored by " + String(abs(game.spread))
         }
         
         if game.spread < -99.0 {
@@ -129,7 +129,7 @@ class NBATableViewController: UITableViewController {
         
     }
     
-    func returnPNG(team: String) -> String {
+    func returnPNG(_ team: String) -> String {
         
         switch team {
         case "Indiana Pacers":

@@ -16,7 +16,7 @@ class NHLTableViewController: UITableViewController {
     
     var slate:[NHLdownloader.Game] = [] {
         didSet {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
         }
@@ -29,7 +29,7 @@ class NHLTableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl!.addTarget(self, action: #selector(NHLTableViewController.refreshNHLslate), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(NHLTableViewController.refreshNHLslate), for: UIControlEvents.valueChanged)
         
         refreshNHLslate()
         
@@ -43,20 +43,20 @@ class NHLTableViewController: UITableViewController {
     }
     
     @IBAction func refreshNHLslate() {
-        let refreshOperation = NSBlockOperation(block: {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let refreshOperation = BlockOperation(block: {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let downloader = NHLdownloader()
             self.slate = downloader.returnSlate()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
         refreshOperation.completionBlock = {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.refreshControl?.endRefreshing()
             })
         }
         
         refreshControl?.beginRefreshing()
-        NSOperationQueue().addOperation(refreshOperation)
+        OperationQueue().addOperation(refreshOperation)
     }
     
     
@@ -71,12 +71,12 @@ class NHLTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard slate.count != 0 else {
             return 0
@@ -84,15 +84,15 @@ class NHLTableViewController: UITableViewController {
         return slate.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "NhlCell"
         
         let game = slate[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! NHLTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! NHLTableViewCell
         
-        cell.date.text = game.datetime.componentsSeparatedByString("+")[0]
+        cell.date.text = game.datetime.components(separatedBy: "+")[0]
         cell.spread.text = ""//"visiting spread set at " + String(game.spread)
         cell.awaySpread.text = "(" + String(game.spread) + ")"
         cell.homeSpread.text = "(" + String(-1*game.spread) + ")"
@@ -103,7 +103,7 @@ class NHLTableViewController: UITableViewController {
         cell.homeImage.image = UIImage(named: game.home)
         
         //check if we have reached spread for total goals on the day
-        if game.away.rangeOfString("Goals") != nil {
+        if game.away.range(of: "Goals") != nil {
             cell.date.text = "NHL Total Goals Spread"
         }
         

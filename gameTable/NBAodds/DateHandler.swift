@@ -8,24 +8,24 @@
 
 import Foundation
 
-let hoursDifferenceFromGMT = NSTimeZone.localTimeZone().secondsFromGMT / 60 / 60
+let hoursDifferenceFromGMT = NSTimeZone.local.secondsFromGMT() / 60 / 60
 
-extension NSDate {
+extension Date {
     func dayOfWeek() -> Int? {
         if
-            let cal: NSCalendar = NSCalendar.currentCalendar(),
-            let comp: NSDateComponents = cal.components(.Weekday, fromDate: self) {
+            let cal: Calendar = Calendar.current,
+            let comp: DateComponents = (cal as NSCalendar).components(.weekday, from: self) {
             return comp.weekday
         } else {
             return nil
         }
     }
 }
-
+/* (swift 2.x)
 extension String {
     
     subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
     subscript (i: Int) -> String {
@@ -33,12 +33,26 @@ extension String {
     }
     
     subscript (r: Range<Int>) -> String {
-        let start = startIndex.advancedBy(r.startIndex)
-        let end = start.advancedBy(r.endIndex - r.startIndex)
+        let start = characters.index(startIndex, offsetBy: r.lowerBound)
+        let end = String.CharacterView.index(start, offsetBy: r.upperBound - r.lowerBound)
         return self[Range(start ..< end)]
     }
 }
-
+*/
+extension String { // Swift 3!
+    subscript(i: Int) -> String {
+        guard i >= 0 && i < characters.count else { return "" }
+        return String(self[index(startIndex, offsetBy: i)])
+    }
+    subscript(range: Range<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) ?? endIndex))
+    }
+    subscript(range: ClosedRange<Int>) -> String {
+        let lowerIndex = index(startIndex, offsetBy: max(0,range.lowerBound), limitedBy: endIndex) ?? endIndex
+        return substring(with: lowerIndex..<(index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) ?? endIndex))
+    }
+}
 // Shows the cumulative days through the year (by month), used for comparing dates
 let daysThroughTheYear:[Int] = [31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 365]
 
@@ -49,11 +63,11 @@ let daysThroughTheYear:[Int] = [31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 3
 ///
 /// - returns: hour of datetime
 ///
-func hourAsInt(date: String) -> Int {
-    var form = date.componentsSeparatedByString(",")[1]
-    form = form.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-    form = form.componentsSeparatedByString(":")[0]
-    form = form.componentsSeparatedByString(" ")[1]
+func hourAsInt(_ date: String) -> Int {
+    var form = date.components(separatedBy: ",")[1]
+    form = form.trimmingCharacters(in: CharacterSet.whitespaces)
+    form = form.components(separatedBy: ":")[0]
+    form = form.components(separatedBy: " ")[1]
     
     return Int(form)!
 }
@@ -65,10 +79,10 @@ func hourAsInt(date: String) -> Int {
 ///
 /// - returns: minute (% 60) of datetime
 ///
-func minuteAsInt(date: String) -> Int {
-    var form = date.componentsSeparatedByString(",")[1]
-    form = form.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-    form = form.componentsSeparatedByString(":")[1][0...1]
+func minuteAsInt(_ date: String) -> Int {
+    var form = date.components(separatedBy: ",")[1]
+    form = form.trimmingCharacters(in: CharacterSet.whitespaces)
+    form = form.components(separatedBy: ":")[1][0...1]
     
     return Int(form)!
 }
@@ -80,10 +94,10 @@ func minuteAsInt(date: String) -> Int {
 ///
 /// - returns: day of datetime
 ///
-func dayAsInt(date: String) -> Int {
+func dayAsInt(_ date: String) -> Int {
     
-    let form = date.componentsSeparatedByString("+")[1]
-    let day = form.componentsSeparatedByString("-")[1]
+    let form = date.components(separatedBy: "+")[1]
+    let day = form.components(separatedBy: "-")[1]
     
     
     return Int(day)!
@@ -97,11 +111,11 @@ func dayAsInt(date: String) -> Int {
 ///
 /// - returns: month of datetime
 ///
-func monthAsInt(date: String) -> Int {
+func monthAsInt(_ date: String) -> Int {
     
-    let form = date.componentsSeparatedByString("+")[1]
-    var month = form.componentsSeparatedByString("-")[0]
-    month = month.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    let form = date.components(separatedBy: "+")[1]
+    var month = form.components(separatedBy: "-")[0]
+    month = month.trimmingCharacters(in: CharacterSet.whitespaces)
     
     return Int(month)!
     
@@ -115,7 +129,7 @@ func monthAsInt(date: String) -> Int {
 ///
 /// - returns: formatted datetime for UI (EST time)
 ///
-func GMTtoEST(gmt: String) -> String {
+func GMTtoEST(_ gmt: String) -> String {
     
     let timeOfEvent = ESThourAndMinute(gmt) + ESTmorningOrAfternoon(gmt)
     let dayOfEvent = ESTday(gmt)
@@ -131,7 +145,7 @@ func GMTtoEST(gmt: String) -> String {
 ///
 /// - returns: hour:minute of datetime in EST
 ///
-func ESThourAndMinute(gmt: String) -> String {
+func ESThourAndMinute(_ gmt: String) -> String {
     let adjustHourByLocalTimeZone = (((Int(gmt[11...12])! + 24)+hoursDifferenceFromGMT)%24)%12
     let ESTtime = String(adjustHourByLocalTimeZone) + gmt[13...15]
     return ESTtime
@@ -146,7 +160,7 @@ func ESThourAndMinute(gmt: String) -> String {
 ///
 /// - returns: "pm" or "am"
 ///
-func ESTmorningOrAfternoon(gmt: String) -> String {
+func ESTmorningOrAfternoon(_ gmt: String) -> String {
     let morningMax = 11 //11am or lower indicates a morning time
     if ((Int(gmt[11...12])! + 24)+hoursDifferenceFromGMT) % 24 > morningMax {
         return "pm"
@@ -164,8 +178,8 @@ func ESTmorningOrAfternoon(gmt: String) -> String {
 ///
 /// - returns: day of the month
 ///
-func eventDay(gmt: String) -> Int {
-    gmt
+func eventDay(_ gmt: String) -> Int {
+    //gmt
     var eventDay = Int(gmt[8...9])
     let eventHourAsGMT = Int(gmt[11...12])!
     let eventHourAsEST = eventHourAsGMT + hoursDifferenceFromGMT
@@ -182,7 +196,7 @@ func eventDay(gmt: String) -> Int {
 ///
 /// - returns: month of the year
 ///
-func eventMonth(gmt: String) -> Int {
+func eventMonth(_ gmt: String) -> Int {
     let eventMonth = Int(gmt[5...6])
     return eventMonth!
 }
@@ -196,8 +210,8 @@ func eventMonth(gmt: String) -> Int {
 ///
 /// - returns: header for formatted datetime (EST)
 ///
-func ESTday(gmt: String) -> String {
-    let nsDateObject = NSDate()
+func ESTday(_ gmt: String) -> String {
+    let nsDateObject = Date()
     let today = Int(nsDateObject.description[8...9])
     let dayOfEvent = eventDay(gmt)
     let monthOfEvent = eventMonth(gmt)

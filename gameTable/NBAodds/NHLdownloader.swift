@@ -10,13 +10,13 @@ import Foundation
 
 
 let nhlURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Hockey&sportsubtype=NHL%20OT%20Incl"
-let nhlURL = NSURL(string: nhlURLlink)
+let nhlURL = URL(string: nhlURLlink)
 
 ///
 /// Downloads league information from PinnacleSports server and parses the XML feed
 ///  populates companion TableViewController
 ///
-class NHLdownloader: NSObject, NSXMLParserDelegate {
+class NHLdownloader: NSObject, XMLParserDelegate {
     
     // Game struct for a typical NHL (ice hockey) event
     struct Game {
@@ -30,7 +30,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     }
     
     // specify an NSXMLparser to handle XML feed from pinnacle sports (nhlURL)
-    var parser: NSXMLParser!
+    var parser: XMLParser!
     
     // eg: ["2016-04-14 00:05", "NHL", "No", "Islanders", "Visiting", "Canucks", "Home", "0.5"]
     var strXMLData:[String] = []
@@ -66,7 +66,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
         
         var slate:[Game] = []
         
-        parser = NSXMLParser(contentsOfURL: nhlURL!)
+        parser = XMLParser(contentsOf: nhlURL!)
         parser.delegate = self
         
         let success:Bool = parser.parse()
@@ -81,7 +81,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
             print("parse failure!")
         }
         
-        slate.sortInPlace { $0 < $1 }
+        slate.sort { $0 < $1 }
         
         return slate
         
@@ -96,7 +96,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: preliminary slate of events for NHL (still needs to be sorted)
     ///
-    func fillSlate(rawFeed: [[String]]) -> [Game] {
+    func fillSlate(_ rawFeed: [[String]]) -> [Game] {
         
         var finish:[Game] = []
         
@@ -137,7 +137,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a start tag for a given element.
     ///
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         currentElement=elementName;
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw")
         {
@@ -156,7 +156,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters an end tag for a specific element.
     ///
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElement="";
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw")
         {
@@ -176,7 +176,7 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element.
     ///
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         
         if gamePeriod {
             whichPeriod = string
@@ -216,8 +216,8 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a fatal error.
     ///
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        NSLog("failure error: %@", parseError)
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        NSLog("failure error: %@", parseError as NSError)
     }
     
     
@@ -232,11 +232,11 @@ class NHLdownloader: NSObject, NSXMLParserDelegate {
 func <(left: NHLdownloader.Game, right: NHLdownloader.Game) -> Bool {
     
     // guard against total goals spread (special cell that should always go last)
-    if left.away.rangeOfString("Goals") != nil {
+    if left.away.range(of: "Goals") != nil {
         return false
     }
     
-    if right.away.rangeOfString("Goals") != nil {
+    if right.away.range(of: "Goals") != nil {
         return true
     }
     

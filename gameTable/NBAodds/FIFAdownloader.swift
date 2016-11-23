@@ -21,7 +21,7 @@ let majorLeagues:[String] = ["Eng. Premier", "Bundesliga", "Serie A", "La Liga",
 ///
 /// FIFAdownloader is unique in that it pulls far more information than other downloader (from 4 UEFA leagues)
 ///
-class FIFAdownloader: NSObject, NSXMLParserDelegate {
+class FIFAdownloader: NSObject, XMLParserDelegate {
     
     // Game struct for a typical FIFA (soccer) event
     struct Game {
@@ -35,7 +35,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     }
     
     // specify an NSXMLparser to handle XML feed from pinnacle sports (fifaURL)
-    var parser: NSXMLParser!
+    var parser: XMLParser!
     
     // eg: ["2016-04-14 00:05", "NBA", "No", "Sacramento Kings", "Visiting", "Houston Rockets", "Home", "15.5"]
     var strXMLData:[String] = []
@@ -78,9 +78,9 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
         var slate:[Game] = []
         
         if fifaURL == nil {
-            fifaURL = NSURL(string: FIFAadjustLink)
+            fifaURL = URL(string: FIFAadjustLink)
         }
-        parser = NSXMLParser(contentsOfURL: fifaURL!)
+        parser = XMLParser(contentsOf: fifaURL! as URL)
         parser.delegate = self
         
         let success:Bool = parser.parse()
@@ -97,7 +97,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
         
         let sortedSlate = sortSlate(slate)
         
-        fifaURL = NSURL(string: fifaURLlink)
+        fifaURL = URL(string: fifaURLlink)
         
         return sortedSlate
         
@@ -114,22 +114,22 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
         
         var slate:[Game] = []
         
-        var blendLink:NSURL
+        var blendLink:URL
         var adjustLnk = ""
         
         for lge in FIFAfilter {
             
         adjustLnk = FIFAadjustLink + "&sportsubtype=" + lge
             
-        adjustLnk = adjustLnk.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+        adjustLnk = adjustLnk.replacingOccurrences(of: " ", with: "%20")
             
         print(adjustLnk)
         
         //adjustLnk = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Soccer&sportsubtype=Copa%20America"
-        blendLink = NSURL(string: adjustLnk)!
+        blendLink = URL(string: adjustLnk)!
     
         
-        parser = NSXMLParser(contentsOfURL: blendLink)
+        parser = XMLParser(contentsOf: blendLink)
         parser.delegate = self
         
         let success:Bool = parser.parse()
@@ -149,7 +149,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
         
         let sortedSlate = sortSlate(slate)
         
-        fifaURL = NSURL(string: fifaURLlink)
+        fifaURL = URL(string: fifaURLlink)
         
         return sortedSlate
         
@@ -162,25 +162,25 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// returns: FIFA event slate sorted by league name
     ///
-    private func sortSlateByLeague(slate: [Game]) -> [[Game]] {
+    fileprivate func sortSlateByLeague(_ slate: [Game]) -> [[Game]] {
         var comprehensiveSlate:[[Game]] = []
         var leagues:[String] = []
         
         for game in slate {
-            if leagues.indexOf(game.league) == nil {
+            if leagues.index(of: game.league) == nil {
                 leagues.append(game.league)
                 comprehensiveSlate.append([])
             }
         }
         
         for game in slate {
-            comprehensiveSlate[leagues.indexOf(game.league)!].append(game)
+            comprehensiveSlate[leagues.index(of: game.league)!].append(game)
         }
         
         var sortedSlate:[[Game]] = []
         for lg in FIFAfilter { // ["Eng. Premier", "Bundesliga", "Serie A", "La Liga", "USA (MLS)"] {
-            if leagues.indexOf(lg) != nil {
-                sortedSlate.append(comprehensiveSlate[leagues.indexOf(lg)!])
+            if leagues.index(of: lg) != nil {
+                sortedSlate.append(comprehensiveSlate[leagues.index(of: lg)!])
             } else {
                 sortedSlate.append([])
             }
@@ -197,7 +197,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// returns: FIFA event slate sorted by league name
     ///
-    private func sortSlateByDatetime(slate: [[Game]]) -> [[Game]] {
+    fileprivate func sortSlateByDatetime(_ slate: [[Game]]) -> [[Game]] {
         
         var sort:[[Game]] = []
         var wedge:[Game] = []
@@ -205,7 +205,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
             for game in league {
                 wedge.append(game)
             }
-            wedge.sortInPlace { $0 < $1 }
+            wedge.sort { $0 < $1 }
             sort.append(wedge)
             wedge.removeAll()
             
@@ -223,7 +223,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: polished, sorted FIFA event slate to be sent to FIFATableViewController
     ///
-    private func sortSlate(slate: [Game]) -> [[Game]] {
+    fileprivate func sortSlate(_ slate: [Game]) -> [[Game]] {
         
         let sortedByLeague:[[Game]] = sortSlateByLeague(slate)
         let sortedByLeagueAndDate:[[Game]] = sortSlateByDatetime(sortedByLeague)
@@ -239,7 +239,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: preliminary slate of events for FIFA (still needs to be sorted)
     ///
-    private func fillSlate(rawFeed: [[String]]) -> [Game] {
+    fileprivate func fillSlate(_ rawFeed: [[String]]) -> [Game] {
         
         
         var finish:[Game] = []
@@ -278,7 +278,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
                 spread = Double(-999)
             }
             
-            if away.rangeOfString("Teams") == nil && spread > -900 {
+            if away.range(of: "Teams") == nil && spread > -900 {
                 finish.append(Game(datetime: datetime, league: league, isLive: isLive, away: away, home: home, spread: spread))
             }
             
@@ -291,7 +291,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a start tag for a given element.
     ///
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         currentElement=elementName;
         
         if (elementName=="participant_name") {
@@ -325,7 +325,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters an end tag for a specific element.
     ///
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElement="";
         
         if (elementName=="participant_name") {
@@ -360,11 +360,11 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element.
     ///
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         
         if noLine {
             if string.isEmpty { // a line has not been set
-                if FIFAfilter.indexOf(strXMLData[1]) != nil {
+                if FIFAfilter.index(of: strXMLData[1]) != nil {
                     rawSlate.append(strXMLData)
                 }
                 strXMLData.removeAll()
@@ -393,7 +393,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
             if foundMoneyLine  {
                 if whichPeriod=="Match" {
                     strXMLData.append(string)
-                    if FIFAfilter.indexOf(strXMLData[1]) != nil {
+                    if FIFAfilter.index(of: strXMLData[1]) != nil {
                         rawSlate.append(strXMLData)
                     }
                     strXMLData.removeAll()
@@ -412,7 +412,7 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
                 ///
                 
                 if (string.characters.count == strXMLData[0].characters.count) && (string[0...2] == strXMLData[0][0...2]) {
-                    if FIFAfilter.indexOf(strXMLData[1]) != nil {
+                    if FIFAfilter.index(of: strXMLData[1]) != nil {
                         rawSlate.append(strXMLData)
                     }
                     strXMLData.removeAll()
@@ -439,8 +439,8 @@ class FIFAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a fatal error.
     ///
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        NSLog("failure error: %@", parseError)
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        NSLog("failure error: %@", parseError as NSError)
     }
     
     

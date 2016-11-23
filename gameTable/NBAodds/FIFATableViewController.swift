@@ -18,7 +18,7 @@ class FIFATableViewController: UITableViewController {
     
     var slate:[[FIFAdownloader.Game]] = [] {
         didSet {
-            dispatch_async(dispatch_get_main_queue(), {
+            DispatchQueue.main.async(execute: {
                 self.tableView.reloadData()
             })
         }
@@ -29,7 +29,7 @@ class FIFATableViewController: UITableViewController {
         
         refreshControl = UIRefreshControl()
         refreshControl!.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl!.addTarget(self, action: #selector(FIFATableViewController.refreshFIFAslate), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl!.addTarget(self, action: #selector(FIFATableViewController.refreshFIFAslate), for: UIControlEvents.valueChanged)
         
         
         refreshFIFAslate()
@@ -46,20 +46,20 @@ class FIFATableViewController: UITableViewController {
     ///
     @IBAction func refreshFIFAslate() {
         
-        let refreshOperation = NSBlockOperation(block: {
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        let refreshOperation = BlockOperation(block: {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             let downloader = FIFAdownloader()
             self.slate = downloader.lightningReturnSlate() // changed from returnSlate to lightningReturnSlate
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
         })
         
         refreshOperation.completionBlock = {
-            dispatch_async(dispatch_get_main_queue(), { self.refreshControl?.endRefreshing()
+            DispatchQueue.main.async(execute: { self.refreshControl?.endRefreshing()
             })
         }
         
         refreshControl?.beginRefreshing()
-        NSOperationQueue().addOperation(refreshOperation)
+        OperationQueue().addOperation(refreshOperation)
         
     }
     
@@ -72,13 +72,13 @@ class FIFATableViewController: UITableViewController {
     // MARK: - Table view data source
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return FIFAfilter.count
     }
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard slate.count != 0 else {
             return 0
@@ -86,23 +86,30 @@ class FIFATableViewController: UITableViewController {
         return slate[section].count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return FIFAfilter[section]
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let game = slate[indexPath.section][indexPath.row]
         
         let cellIdentifier = "FifaTableCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FIFATableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! FIFATableViewCell
         
-        cell.date.text = game.datetime.componentsSeparatedByString("+")[0]
-        cell.dateDescription.text = game.datetime.componentsSeparatedByString("+")[1]
-        if cell.date.text?.componentsSeparatedByString(" ")[2][0] == "0" {
-            cell.date.text = game.datetime.componentsSeparatedByString("+")[0].componentsSeparatedByString(" ")[0] + " " + game.datetime.componentsSeparatedByString("+")[0].componentsSeparatedByString(" ")[1] + " 12:" + game.datetime.componentsSeparatedByString("+")[0].componentsSeparatedByString(" ")[2].componentsSeparatedByString(":")[1]
+        cell.date.text = game.datetime.components(separatedBy: "+")[0]
+        cell.dateDescription.text = game.datetime.components(separatedBy: "+")[1]
+        if cell.date.text?.components(separatedBy: " ")[2][0] == "0" {
+            
+            //cell.date.text = game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[0] + " " + game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[1] + " 12:" + game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[2].components(separatedBy: ":")[1]
+            
+            let first = game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[0]
+            let second = game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[1]
+            let third = game.datetime.components(separatedBy: "+")[0].components(separatedBy: " ")[2].components(separatedBy: ":")[1]
+            cell.date.text = first + " " + second + "12: " + third
+            
         }
         
         // refactor later

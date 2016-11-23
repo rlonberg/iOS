@@ -9,14 +9,14 @@
 import Foundation
 
 let nbaURLlink = "http://xml.pinnaclesports.com/pinnaclefeed.aspx?sporttype=Basketball&sportsubtype=NBA"
-let nbaURL = NSURL(string: nbaURLlink)
+let nbaURL = URL(string: nbaURLlink)
 
 
 ///
 /// Downloads league information from PinnacleSports server and parses the XML feed
 ///  populates companion TableViewController
 ///
-class NBAdownloader: NSObject, NSXMLParserDelegate {
+class NBAdownloader: NSObject, XMLParserDelegate {
     
     // Game struct for a typical NBA (basketball) event
     struct Game {
@@ -32,7 +32,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     
     
     // specify an NSXMLparser to handle XML feed from pinnacle sports (nbaURL)
-    var parser: NSXMLParser!
+    var parser: XMLParser!
     
     // eg: ["2016-04-14 00:05", "NBA", "No", "Sacramento Kings", "Visiting", "Houston Rockets", "Home", "15.5"]
     var strXMLData:[String] = []
@@ -69,7 +69,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
         
         var slate:[Game] = []
         
-        parser = NSXMLParser(contentsOfURL: nbaURL!)
+        parser = XMLParser(contentsOf: nbaURL!)
         parser.delegate = self
         
         let success:Bool = parser.parse()
@@ -84,7 +84,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
             print("parse failure!")
         }
         
-        slate.sortInPlace { $0 < $1 }
+        slate.sort { $0 < $1 }
         
         return slate
         
@@ -98,7 +98,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// - returns: preliminary slate of events for NBA (still needs to be sorted)
     ///
-    private func fillSlate(rawFeed: [[String]]) -> [Game] {
+    fileprivate func fillSlate(_ rawFeed: [[String]]) -> [Game] {
         
         var finish:[Game] = []
         
@@ -143,7 +143,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a start tag for a given element.
     ///
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         currentElement=elementName;
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw")
         {
@@ -162,7 +162,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters an end tag for a specific element.
     ///
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         currentElement="";
         if(elementName=="event_datetimeGMT" || elementName=="league" || elementName=="IsLive" || elementName=="participant_name" || elementName=="visiting_home_draw")
         {
@@ -182,7 +182,7 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to provide its delegate with a string representing all or part of the characters of the current element.
     ///
-    func parser(parser: NSXMLParser, foundCharacters string: String) {
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
      
         if gamePeriod {
             whichPeriod = string
@@ -222,8 +222,8 @@ class NBAdownloader: NSObject, NSXMLParserDelegate {
     ///
     /// Sent by a parser object to its delegate when it encounters a fatal error.
     ///
-    func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
-        NSLog("failure error: %@", parseError)
+    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
+        NSLog("failure error: %@", parseError as NSError)
     }
     
     
